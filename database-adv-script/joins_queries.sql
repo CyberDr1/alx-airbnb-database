@@ -17,3 +17,8 @@ UNION
 SELECT users.id AS user_id, users.name, bookings.id AS booking_id, bookings.start_date
 FROM users
 RIGHT JOIN bookings ON users.id = bookings.user_id;
+-- LEFT JOIN: Properties and their Reviews (include properties without reviews)
+SELECT properties.name AS property_name, reviews.rating, reviews.comment
+FROM properties
+LEFT JOIN reviews ON properties.id = reviews.property_id
+ORDER BY properties.name;
