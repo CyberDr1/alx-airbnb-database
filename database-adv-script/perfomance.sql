@@ -31,3 +31,16 @@ JOIN users u ON b.user_id = u.id
 JOIN properties p ON b.property_id = p.id
 WHERE p.city = 'Cape Town'
 LIMIT 100;
+
+-- Initial query joining bookings, users, properties, and payments with filters
+SELECT
+    b.id AS booking_id,
+    u.name AS user_name,
+    p.name AS property_name,
+    pay.amount,
+    pay.status
+FROM bookings b
+JOIN users u ON b.user_id = u.id
+JOIN properties p ON b.property_id = p.id
+JOIN payments pay ON pay.booking_id = b.id
+WHERE pay.status = 'confirmed' AND pay.amount > 100;
